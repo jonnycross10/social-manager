@@ -3,8 +3,8 @@ import hashlib
 
 
 def main(username, password, is_signup):
-    user_hash = hashlib.md5(username).hexdigest()
-    pass_hash = hashlib.md5(password).hexdigest()
+    user_hash = hashlib.md5(str.encode(username)).hexdigest()
+    pass_hash = hashlib.md5(str.encode(password)).hexdigest()
 
     print(user_hash)
     print(pass_hash)
@@ -47,8 +47,8 @@ def main(username, password, is_signup):
         return None
 
 if __name__ == '__main__':
-    username = b"@gmail.com"
-    password = b"1234567"
+    username = "@gmail.com"
+    password = "1234567"
     profile_name = main(username,password, is_signup=False)
     if(profile_name):
         print('Hello, ' + str(username))
