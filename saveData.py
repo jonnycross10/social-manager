@@ -44,7 +44,7 @@ def main(username, password, is_signup):
         return username
     else:
         print('Account does not exist')
-        return username
+        return None
 
 if __name__ == '__main__':
     username = "@gmail.com"
