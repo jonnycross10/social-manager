@@ -21,9 +21,12 @@ def main(username, password, is_signup):
             return False, table
 
     def create_account():
-        verified, accounts = check_account()
-        if(verified):
-            return
+        #If the account exists, return nothing
+        accounts = None
+        with open('credentials.json') as crd:
+            accounts = json.load(crd)
+            if user_hash in accounts:
+                return
 
         with open('credentials.json', 'w') as crd:
             accounts[user_hash] = credentials[user_hash]
