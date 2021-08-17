@@ -1,10 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, jsonify, after_this_request
 from saveData import main
 app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def home():
     return render_template('startup.html')
+
+@app.route("/test", methods=["GET"])
+def test():
+    @after_this_request
+    def add_header(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return jsonify({"Gray":True})
 
 @app.route("/signup_page")
 def signup():
